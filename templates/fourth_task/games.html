@@ -1,0 +1,22 @@
+{% extends "fourth_task/menu.html" %}
+    {% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>Игры</title>
+</head>
+    {% endblock %}
+
+{% block page_name %}
+<h1>Игры</h1>
+{% endblock %}
+
+{% block content %}
+        <ul>
+        {% for game in games %}
+            <li>
+                {{ game.title }} | {{ game.description }}. Стоимость: {{ game.cost }}
+                <button>Купить</button>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

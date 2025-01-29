@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Регистрация пользователя</title>
+</head>
+<body>
+    <form method="POST" >
+        {% csrf_token %}
+        <h3>Регистрация нового пользователя:</h3>
+       <p><label for="name">Введите ваше имя</label>
+        <input type="text" id="name" name="name" maxlength=30 required></p>
+        <p><label for="balance">Введите ваш баланс</label>
+        <input type="int" id="balance" name="balance" required></p>
+        <p><label for="age">Введите ваш возраст</label>
+        <input type="int" id="age" name="age" maxlength="3" required></p>
+        <p><button type="submit">Отправить</button></p>
+    </form>
+
+</body>
+</html>
