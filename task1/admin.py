@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Game, Buyer
+from .models import Game, Buyer, News
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
@@ -16,3 +16,10 @@ class BuyerAdmin(admin.ModelAdmin):
     list_per_page = 30  # Ограничение кол-ва записей до 30
 
     readonly_fields = ('balance',)  # Поле balance только для чтения
+
+@admin.register(News)
+class News(admin.ModelAdmin):
+    list_display = ('title', 'content', 'data')  # Отображение полей
+    list_filter = ('title', 'data')  # Фильтрация по полям
+    search_fields = ('title',)  # Поиск по полю name
+    list_per_page = 30  # Ограничение кол-ва записей до 30

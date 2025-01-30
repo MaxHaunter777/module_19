@@ -3,7 +3,8 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 from .forms import UserRegister
 from django.http import JsonResponse
-from .models import Buyer, Game
+from .models import Buyer, Game, News
+from django.core.paginator import Paginator
 
 def func_template(request):
     return render(request, "fourth_task/func_template.html")
@@ -42,6 +43,12 @@ def register_user(request):
         return HttpResponse(f'Пользователь создан успешно: {new_buyer.name}')
     return render(request, 'fifth_task/registration_page.html')
 
+def news(request):
+    news = News.objects.all().order_by('data')
+    paginator = Paginator(news, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'News.html', {'news': page_obj})
 
 '''
 def register_user(request):

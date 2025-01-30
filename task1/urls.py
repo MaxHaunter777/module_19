@@ -9,4 +9,5 @@ urlpatterns = [
     path('platform/games/', games),
     path('platform/', template_platform.as_view()),
     path('platform/registration/', register_user),
+    path('platform/news/', news),
     ]

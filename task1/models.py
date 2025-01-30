@@ -21,3 +21,13 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+
+class News(models.Model):
+    '''Модель представляющая новости'''
+    title = models.CharField('Заголовок', max_length=100)
+    content = models.TextField('Описание новости')
+    data = models.DateTimeField('Дата создания', auto_now_add=True)
+
+
+    def __str__(self):
+        return self.title
