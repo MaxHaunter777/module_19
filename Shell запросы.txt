@@ -1,0 +1,37 @@
+# Импорт моделей
+from your_app_name.models import Buyer, Game, News, User, Novelty
+
+# 1. Получение всех объектов базы данных и конкретного объекта по id
+# Получение всех покупателей
+buyers = Buyer.objects.all()
+print(buyers)
+
+# Получение покупателя по id (например, id=1)
+buyer = Buyer.objects.get(id=1)
+print(buyer)
+
+# 2. Запрос на фильтрацию
+# Получение всех игр с ценой меньше 50
+affordable_games = Game.objects.filter(cost__lt=50)
+print(affordable_games)
+
+# 3. Запрос на добавление объекта
+# Добавление нового покупателя
+new_buyer = Buyer(name='Иван', balance=100.00, age=25)
+new_buyer.save()
+print(new_buyer)
+
+# 4. Запрос на удаление объекта
+# Удаление покупателя по id
+buyer_to_delete = Buyer.objects.get(id=2)  # Предположим, что мы хотим удалить покупателя с id=2
+buyer_to_delete.delete()
+print(f'Покупатель с id=2 удален.')
+
+# 5. Запрос на подсчет количества объектов (len())
+# Подсчет общего количества покупателей
+total_buyers = Buyer.objects.count()
+print(f'Количество покупателей: {total_buyers}')
+
+# Подсчет количества игр с фильтрацией (например, игр с ценой меньше 50)
+affordable_games_count = Game.objects.filter(cost__lt=50).count()
+print(f'Количество доступных игр (приблизительная цена меньше 50): {affordable_games_count}')
